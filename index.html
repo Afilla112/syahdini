@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Lebaran Saya</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#" onclick="showContent('home', event)" class="active">Home</a></li>
+        <li><a href="#" onclick="showContent('about', event)">Tentang</a></li>
+        <li><a href="#" onclick="showContent('dailyeid', event)">A Daily On My Eid</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Home Section -->
+      <section id="home" class="content-section">
+        <div class="hero-lebaran">
+          <h1>🌙 Selamat Datang di Website Lebaran Saya</h1>
+          <p class="lead">Semoga hari-hari kita selalu diberkahi seperti saat Eid.</p>
+          <img src="ketupat.jpeg" alt="Ketupat" class="hero-image" />
+          <p class="intro-text">
+            Silakan jelajahi halaman lainnya untuk melihat apa saja yang saya lakukan selama saya lebaran.
+          </p>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="content-section" style="display: none;">
+        <div class="about-card">
+          <h1>✨ Tentang Website Ini</h1>
+          <p>Namun lebih dari itu, ini adalah wadah untuk berbagi kisah indah dan penuh makna selama Lebaran.</p>
+          <blockquote>"Berbagi itu indah, apalagi di hari yang suci."</blockquote>
+        </div>
+      </section>
+
+      <!-- Eid Story Section -->
+      <section id="dailyeid" class="content-section" style="display: none;">
+        <div class="eid-story">
+            <h1 style="text-align: center;">📖 Cerita Saya Selama Eid</h1>
+          <img id="eidImage" src="eid1.jpg" alt="Eid Photo" />
+          <p id="eidText">
+            Pagi hari dimulai dengan salat Ied bersama keluarga di lapangan dekat rumah.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Desain by Afilla Dwi Syahdini</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Fungsi Menampilkan Konten
+    function showContent(sectionId, event) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+
+      // Atur menu aktif
+      const links = document.querySelectorAll('.sidebar ul li a');
+      links.forEach(link => link.classList.remove('active'));
+      if (event) event.target.classList.add('active');
+    }
+
+    // Slideshow Cerita Eid
+    const eidTexts = [
+      "Pagi hari dimulai dengan salat Ied bersama keluarga di mesjid dekat rumah.",
+      "Setelah salat, kami saling bermaafan dan bersalaman.",
+      "Makan ketupat, opor, dan rendang bersama menjadi momen yang paling dinanti dan kami pergi berkunjung ke semua rumah saudara kami.",
+    ];
+
+    const eidImages = ["eid1.jpg", "eid2.jpg", "eid3.jpg"];
+    let currentIndex = 0;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % eidTexts.length;
+      document.getElementById('eidText').textContent = eidTexts[currentIndex];
+      document.getElementById('eidImage').src = eidImages[currentIndex];
+    }, 4000);
+  </script>
+</body>
+</html>
